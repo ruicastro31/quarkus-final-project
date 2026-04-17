@@ -17,7 +17,6 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import java.time.Duration;
 import java.util.Set;
-import java.util.UUID;
 
 @Path("/auth")
 public class AuthResouce {

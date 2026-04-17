@@ -6,7 +6,6 @@ import ada.caixaverso.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.core.Response;
 
 @ApplicationScoped
 public class UserService {

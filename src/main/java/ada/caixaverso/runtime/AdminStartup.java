@@ -1,7 +1,6 @@
 package ada.caixaverso.runtime;
 
 import ada.caixaverso.model.User;
-import ada.caixaverso.repository.UserRepository;
 import ada.caixaverso.service.UserService;
 import io.quarkus.runtime.Startup;
 import jakarta.annotation.PostConstruct;
