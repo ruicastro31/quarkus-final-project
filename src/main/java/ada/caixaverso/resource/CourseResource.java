@@ -8,6 +8,8 @@ import ada.caixaverso.model.Course;
 import ada.caixaverso.model.Lesson;
 import ada.caixaverso.repository.CourseRepository;
 import ada.caixaverso.repository.LessonRepository;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Path("/courses")
+@RolesAllowed("ADMIN")
 public class CourseResource {
 
     @Inject
@@ -80,6 +83,7 @@ public class CourseResource {
     }
 
     @GET
+    @PermitAll
     public Response getCourse(){
         List<Course> courses = courseRepository.listAll();
         List<CourseResponse> listResponse = courses.stream().map(c -> new CourseResponse(c.getId(), c.getName(), List.of())).toList();
@@ -89,6 +93,7 @@ public class CourseResource {
 
     @GET
     @Path("{id}")
+    @PermitAll
     public Response getCoursebyId(@PathParam("id") Long id){
         Optional<Course> possibleCourse;
         possibleCourse = courseRepository.findByIdOptional(id);
@@ -127,6 +132,7 @@ public class CourseResource {
 
     @GET
     @Path("/{id}/lessons")
+    @PermitAll
     public Response getLessonsByCourseId(@PathParam("id") Long id){
         Optional<Course> possibleCourse;
         possibleCourse = courseRepository.findByIdOptional(id);
